@@ -24,21 +24,21 @@ export default {
     getBizData(context, params, config = {}) {
       // eslint-disable-next-line no-undef
       //return http.get(`http://dev.ce.bktencent.com:8000/biz-list`, params, config);
-      return http.get(`http://apps1.ce.bktencent.com/stag--umlexp2/biz-list`, params, config);
+      return http.get(BACKEND_API_PREFIX + `/biz-list`, params, config);
       //http://apps1.ce.bktencent.com/stag--umlexp2/
     },
     // 根据业务ID，查询集群列表
     getSetData(context, params, config = {}) {
       // eslint-disable-next-line no-undef
       //const url = `http://dev.ce.bktencent.com:8000/set-list?${queryString.stringify(params)}`;
-      const url = `http://apps1.ce.bktencent.com/stag--umlexp2/set-list?${queryString.stringify(params)}`;
+      const url = BACKEND_API_PREFIX + `/set-list?${queryString.stringify(params)}`;
       return http.get(url, {}, config);
     },
     // 根据业务ID和集群ID，查询模块列表
     getModuleData(context, params, config = {}) {
       // eslint-disable-next-line no-undef
       //const url = `http://dev.ce.bktencent.com:8000/module-list?${queryString.stringify(params)}`;
-      const url = `http://apps1.ce.bktencent.com/stag--umlexp2/module-list?${queryString.stringify(params)}`;
+      const url = BACKEND_API_PREFIX + `/module-list?${queryString.stringify(params)}`;
       return http.get(url, {}, config);
     },
 
