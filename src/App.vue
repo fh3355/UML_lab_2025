@@ -192,6 +192,7 @@ export default {
 
 .main-content {
   min-height: 300px;
+  height: calc(-198px + 100vh);
 }
 
 .bk-navigation {
