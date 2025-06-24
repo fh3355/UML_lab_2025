@@ -100,6 +100,11 @@ export default {
             url: 'example4',
           },
           {
+            name: '仪表盘',
+            icon: 'icon-tree-application-shape',
+            url: 'DashBoard',
+          },
+          {
             name: '登录信息',
             icon: 'icon-tree-group-shape',
             url: 'example2',
