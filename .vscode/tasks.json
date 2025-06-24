@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Makemigrations",
+      "type": "shell",
+      "command": "/Users/huangflamingo/anaconda3/envs/umlexp1/bin/python",
+      "args": ["${workspaceFolder}/manage.py", "makemigrations"],
+      "group": "build",
+      "presentation": { "reveal": "always" }
+    },
+    {
+      "label": "Migrate",
+      "type": "shell",
+      "command": "/Users/huangflamingo/anaconda3/envs/umlexp1/bin/python",
+      "args": ["${workspaceFolder}/manage.py", "migrate"],
+      "group": "build",
+      "presentation": { "reveal": "always" }
+    },
+    {
+      "label": "Run Server",
+      "type": "shell",
+      "command": "/Users/huangflamingo/anaconda3/envs/umlexp1/bin/python",
+      "args": ["${workspaceFolder}/manage.py", "runserver", "dev.ce.bktencent.com:8000"],
+      "group": "build",
+      "presentation": { "reveal": "always" }
+    }
+  ]
+}

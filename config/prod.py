@@ -2,7 +2,7 @@
 """
 Tencent is pleased to support the open source community by making 蓝鲸智云PaaS平台社区版 (BlueKing PaaS Community
 Edition) available.
-Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
+Copyright (C) 2017-2021 THL A29 Limited, a Tencent company. All rights reserved.
 Licensed under the MIT License (the "License"); you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 http://opensource.org/licenses/MIT
@@ -27,15 +27,17 @@ RUN_MODE = "PRODUCT"
 # LOGGING = set_log_level(locals())
 
 # 正式环境数据库可以在这里配置
+
 # DATABASES.update(
 #     {
 #         'default': {
 #             'ENGINE': 'django.db.backends.mysql',
-#             'NAME': '',  # 外部数据库名
-#             'USER': '',  # 外部数据库用户
-#             'PASSWORD': '',  # 外部数据库密码
-#             'HOST': '',  # 外部数据库主机
-#             'PORT': '',  # 外部数据库端口
+#             'NAME': '',  # 数据库名
+#             'USER': '',  # 数据库用户
+#             'PASSWORD': '',  # 数据库密码
+#             'HOST': '',  # 数据库主机
+#             'PORT': '3306',  # 数据库端口
 #         },
 #     }
 # )
+
