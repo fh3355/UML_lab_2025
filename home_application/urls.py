@@ -23,5 +23,8 @@ urlpatterns = (
     url(r"set-list",views.get_sets_list),
     url(r"module-list",views.get_modules_list),
     url(r"host-list",views.get_hosts_list),
+    url(r"search-file", views.search_file),
+    url(r"backup-file", views.backup_file),
+    url(r"backup-record", views.get_backup_record),
     url(r"host-detail",views.get_host_detail)
 )
