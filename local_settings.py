@@ -1,9 +1,9 @@
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "lesson11",  # noqa
+        "NAME": "umlexp2",  # noqa
         "USER": "root",
-        "PASSWORD": "huan0912",
+        "PASSWORD": "fh3355",
         "HOST": "localhost",
         "PORT": "3306",
     },
