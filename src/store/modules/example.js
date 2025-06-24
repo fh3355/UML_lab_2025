@@ -7,7 +7,7 @@ import http from '@/api';
 import queryString from 'query-string';
 
 // 根据实际环境，灵活控制后端的API前缀，更符合蓝鲸最佳实践规范
-const BACKEND_API_PREFIX = process.env.BK_BACKEND_API_PREFIX
+const BACKEND_API_PREFIX = "http://apps1.ce.bktencent.com/stag--umlexp2/"
 
 export default {
   namespaced: true,
