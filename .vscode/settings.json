@@ -1,0 +1,7 @@
+// .vscode/settings.json
+{
+    // 指定环境变量文件
+    "python.envFile": "${workspaceFolder}/dev.env",
+    // （可选）指定 Python 解释器路径，如已有虚拟环境，可按需修改
+    // "python.pythonPath": "${workspaceFolder}/.venv/bin/python"
+}

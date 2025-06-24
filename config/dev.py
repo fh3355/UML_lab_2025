@@ -2,7 +2,7 @@
 """
 Tencent is pleased to support the open source community by making 蓝鲸智云PaaS平台社区版 (BlueKing PaaS Community
 Edition) available.
-Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
+Copyright (C) 2017-2021 THL A29 Limited, a Tencent company. All rights reserved.
 Licensed under the MIT License (the "License"); you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 http://opensource.org/licenses/MIT
@@ -14,6 +14,8 @@ from config import RUN_VER
 from config.default import FRONTEND_BACKEND_SEPARATION
 from blueapps.conf.validators import EnvValidator
 
+import pymysql
+pymysql.install_as_MySQLdb()
 
 EnvValidator(RUN_VER).validate()
 
@@ -43,19 +45,10 @@ BROKER_URL = "redis://localhost:6379/0"
 
 DEBUG = True
 
-# 本地开发数据库设置
+# 本地开发数据库设置 在项目根目录下的local_settings.py中添加
 # USE FOLLOWING SQL TO CREATE THE DATABASE NAMED APP_CODE
-# SQL: CREATE DATABASE `{{ app_code }}` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; # noqa: E501
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": APP_CODE,  # noqa
-        "USER": "root",
-        "PASSWORD": "",
-        "HOST": "localhost",
-        "PORT": "3306",
-    },
-}
+# SQL: CREATE DATABASE `lesson11` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; # noqa: E501
+
 
 # 前后端开发模式下支持跨域配置
 if FRONTEND_BACKEND_SEPARATION:

@@ -2,7 +2,7 @@
 """
 Tencent is pleased to support the open source community by making 蓝鲸智云PaaS平台社区版 (BlueKing PaaS Community
 Edition) available.
-Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
+Copyright (C) 2017-2021 THL A29 Limited, a Tencent company. All rights reserved.
 Licensed under the MIT License (the "License"); you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 http://opensource.org/licenses/MIT
@@ -30,12 +30,13 @@ def get_env_or_raise(key):
     value = os.environ.get(key)
     if not value:
         raise RuntimeError(
-            ('Environment variable "{}" not found, you must set this variable to run this application.').format(key)
+            (
+                'Environment variable "{}" not found, you must set this variable to run this application.'
+            ).format(key)
         )
     return value
 
 
-# 这些变量将由平台通过环境变量提供给应用，本地开发时需手动配置，详见文档
 # 应用 ID
 APP_CODE = os.getenv("BKPAAS_APP_ID", "")
 # 应用用于调用云 API 的 Secret

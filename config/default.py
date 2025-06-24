@@ -2,7 +2,7 @@
 """
 Tencent is pleased to support the open source community by making 蓝鲸智云PaaS平台社区版 (BlueKing PaaS Community
 Edition) available.
-Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
+Copyright (C) 2017-2021 THL A29 Limited, a Tencent company. All rights reserved.
 Licensed under the MIT License (the "License"); you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 http://opensource.org/licenses/MIT
@@ -31,14 +31,7 @@ from blueapps.conf.log import get_logging_config_dict
 #     'blueapps.account',
 # )
 
-# 请在这里加入你的自定义 APP
-INSTALLED_APPS += (
-    "bk_framework_api",
-    "bk_framework_app",
-    "rest_framework",
-    "drf_yasg",
-    
-)
+
 
 # 这里是默认的中间件，大部分情况下，不需要改动
 # 如果你已经了解每个默认 MIDDLEWARE 的作用，确实需要去掉某些 MIDDLEWARE，或者改动先后顺序，请去掉下面的注释，然后修改
@@ -65,8 +58,26 @@ INSTALLED_APPS += (
 #     'django.middleware.locale.LocaleMiddleware',
 # )
 
+# 请在这里加入你的自定义 APP
+INSTALLED_APPS += (  # noqa
+    "corsheaders",          # 添加这一行，解决CORS跨域资源共享问题
+    "home_application",
+    "mako_application",
+)
+
+# # 跨域中间件
+MIDDLEWARE = ("corsheaders.middleware.CorsMiddleware",) + MIDDLEWARE
 # 自定义中间件
 MIDDLEWARE += ()  # noqa
+
+# TODO：在文档中需要处理CORS与CSRF问题，待跟进README
+# 在 response 添加 Access-Control-Allow-Credentials, 即允许跨域使用 cookies
+CORS_ALLOW_CREDENTIALS = True
+
+# CORS白名单，需要配置环境变量，线上需要在开发者中心->应用开发->应用引擎->环境配置中添加环境变量
+CORS_ALLOWED_ORIGINS = [
+    os.getenv('CORS_ALLOWED_ORIGIN'),     # 允许跨域的域名
+]
 
 # 默认数据库AUTO字段类型
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
@@ -74,13 +85,16 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 # 所有环境的日志级别可以在这里配置
 # LOG_LEVEL = 'INFO'
 
+# STATIC_VERSION_BEGIN
 # 静态资源文件(js,css等）在APP上线更新后, 由于浏览器有缓存,
 # 可能会造成没更新的情况. 所以在引用静态资源的地方，都把这个加上
 # Django 模板中：<script src="/a.js?v={{ STATIC_VERSION }}"></script>
+# mako 模板中：<script src="/a.js?v=${ STATIC_VERSION }"></script>
 # 如果静态资源修改了以后，上线前改这个版本号即可
+# STATIC_VERSION_END
 STATIC_VERSION = "1.0"
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]  # noqa
 
 # CELERY 开关，使用时请改为 True，修改项目目录下的 Procfile 文件，添加以下两行命令：
 # worker: python manage.py celery worker -l info
@@ -92,7 +106,7 @@ IS_USE_CELERY = False
 FRONTEND_BACKEND_SEPARATION = False
 
 # CELERY 并发数，默认为 2，可以通过环境变量或者 Procfile 设置
-CELERYD_CONCURRENCY = os.getenv("BK_CELERYD_CONCURRENCY", 2)
+CELERYD_CONCURRENCY = os.getenv("BK_CELERYD_CONCURRENCY", 2)  # noqa
 
 # CELERY 配置，申明任务的文件路径，即包含有 @task 装饰器的函数文件
 CELERY_IMPORTS = ()
@@ -118,7 +132,7 @@ IS_BKUI_HISTORY_MODE = False
 IS_AJAX_PLAIN_MODE = False
 
 # 国际化配置
-LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
+LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)  # noqa
 
 USE_TZ = True
 TIME_ZONE = "Asia/Shanghai"

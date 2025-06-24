@@ -2,7 +2,7 @@
 """
 Tencent is pleased to support the open source community by making 蓝鲸智云PaaS平台社区版 (BlueKing PaaS Community
 Edition) available.
-Copyright (C) 2017 THL A29 Limited, a Tencent company. All rights reserved.
+Copyright (C) 2017-2021 THL A29 Limited, a Tencent company. All rights reserved.
 Licensed under the MIT License (the "License"); you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 http://opensource.org/licenses/MIT
@@ -13,14 +13,11 @@ specific language governing permissions and limitations under the License.
 
 import os
 
-import pymysql
-
 """
 请不要修改该文件
 如果你需要对settings里的内容做修改，config/default.py 文件中 添加即可
 如有任何疑问，请联系 【蓝鲸助手】
 """
-pymysql.install_as_MySQLdb()
 
 # V3判断环境的环境变量为BKPAAS_ENVIRONMENT
 if "BKPAAS_ENVIRONMENT" in os.environ:
