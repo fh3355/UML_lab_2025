@@ -219,6 +219,14 @@ export default {
         console.error(e)
       }
     },
+    async handleBakOperatorChange(value,event){
+      try{
+        console.log('备份维护人输入框，当前输入值为',value)
+        this.bak_operator = value
+      }catch (e) {
+        console.error(e)
+      }
+    },
     toggleTableSize() {
       const size = ['small', 'medium', 'large'];
       const index = (size.indexOf(this.size) + 1) % 3;
