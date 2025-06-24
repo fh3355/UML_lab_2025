@@ -68,7 +68,7 @@ INSTALLED_APPS += (  # noqa
 # # 跨域中间件
 MIDDLEWARE = ("corsheaders.middleware.CorsMiddleware",) + MIDDLEWARE
 # 自定义中间件
-MIDDLEWARE += ()  # noqa
+MIDDLEWARE += ("core.middleware.RecordUserBehaviorMiddleware",)  # noqa
 
 # TODO：在文档中需要处理CORS与CSRF问题，待跟进README
 # 在 response 添加 Access-Control-Allow-Credentials, 即允许跨域使用 cookies
