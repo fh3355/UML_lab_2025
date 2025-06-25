@@ -18,6 +18,8 @@ def show_status(request):
     statuses = Status.objects.all()
     return render(request, 'status.html', {'statuses': statuses})
 
+from config import APP_CODE
+from settings import ENVIRONMENT
 
 def submit_post(request):
     user = WeChatUser.objects.get(user=request.user)
@@ -25,7 +27,10 @@ def submit_post(request):
     if text:
         status = Status(user=user, text=text)
         status.save()
-        return redirect('/status')
+        if ENVIRONMENT == 'dev':
+            return redirect(f'/status')
+        elif ENVIRONMENT == 'stag':
+            return redirect(f'/stag--{APP_CODE}/status')
     return render(request, 'my_post.html')
 
 from django.conf import settings
