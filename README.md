@@ -1,1 +1,1 @@
-开发框架使用说明：https://bk.tencent.com/docs/markdown/ZH/PaaS/DevelopTools/BaseGuide/quickstart/python/python_preparations.md
+测试搭建的腾讯蓝鲸开发平台环境
